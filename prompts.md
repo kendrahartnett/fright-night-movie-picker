@@ -8,3 +8,12 @@
 - **What I reviewed:** The starting repository contained only a short README and license file.
 - **Problems found:** No existing application files were present.
 - **Fixes requested:** None yet.
+
+## Prompt 2
+
+- **Goal:** Continue to Stage 2: connect TMDB, make one request, and show a basic movie result without adding preference filtering.
+- **Original prompt:** “Go on to stage 2.”
+- **Files changed:** `.gitignore`, `index.html`, `styles.css`, `script.js`, `config.example.js`, `config.js`, `prompts.md`.
+- **What I reviewed:** TMDB’s official documentation for the movie discover endpoint and application authentication.
+- **Problems found:** The repository did not contain a TMDB API key, so a live request cannot be verified until one is added locally.
+- **Fixes requested:** None yet.

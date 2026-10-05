@@ -60,16 +60,18 @@
           </fieldset>
 
           <div class="actions">
-            <button class="primary-button" type="button">Pick My Scary Movie</button>
+            <button class="primary-button" type="button" id="pick-movie-button">Pick My Scary Movie</button>
             <button class="secondary-button" type="button">Just Scare Me</button>
           </div>
         </form>
 
-        <section class="result-placeholder" aria-live="polite">
+        <section class="result-placeholder" id="movie-result" aria-live="polite">
           <span aria-hidden="true">✦</span>
-          <p>Your movie recommendation will appear here.</p>
+          <p id="movie-result-text">Your movie recommendation will appear here.</p>
         </section>
       </section>
     </main>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

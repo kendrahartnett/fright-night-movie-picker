@@ -74,6 +74,8 @@ button:hover { transform: translateY(-2px); }
 .result-placeholder { display: flex; align-items: center; gap: .75rem; margin-top: 2.2rem; padding: 1rem 1.15rem; border: 1px dashed rgb(255 198 90 / 35%); border-radius: .75rem; color: var(--muted); background: rgb(16 8 28 / 35%); }
 .result-placeholder span { color: var(--gold); font-size: 1.4rem; }
 .result-placeholder p { margin: 0; font-size: .94rem; }
+.result-placeholder.is-loading { border-style: solid; color: var(--cream); }
+.result-placeholder.is-error { border-color: rgb(243 110 33 / 75%); color: var(--cream); }
 
 @media (max-width: 34rem) {
   .page-shell { padding: 0; }
