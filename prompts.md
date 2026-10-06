@@ -9,6 +9,15 @@
 - **Problems found:** No existing application files were present.
 - **Fixes requested:** None yet.
 
+## Prompt 8
+
+- **Goal:** Build Stage 4 preference filtering and make the “Just Scare Me” button work.
+- **Original prompt:** “Move on to stage 4.”
+- **Files changed:** `index.html`, `script.js`, `prompts.md`.
+- **What I reviewed:** The existing button handlers and TMDB discover filters.
+- **Problems found:** Preferences were not read, the first result was always selected, and “Just Scare Me” had no event handler.
+- **Fixes requested:** None yet.
+
 ## Prompt 7
 
 - **Goal:** Build Stage 3: show the selected movie on a dedicated ticket-style result page.
