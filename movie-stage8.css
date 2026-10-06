@@ -1,0 +1,15 @@
+.movie-ticket { width: min(100%, 64rem); }
+.ticket-content { grid-template-columns: minmax(11rem, 17rem) 1fr; gap: clamp(1rem, 3vw, 2rem); padding: clamp(1rem, 2.5vw, 2rem); }
+.poster-frame { min-height: 14rem; }
+.movie-details h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); }
+.movie-facts { margin: 1rem 0; gap: .6rem 1rem; }
+.scare-factor { margin: 1rem 0; padding: .75rem; }
+.ticket-actions { display: flex; flex-wrap: wrap; gap: .65rem; }
+.top-ten-button { display: inline-block; padding: .75rem 1rem; border: 2px solid var(--blood); background: #4a205c; color: #f4e6ff; font-family: "Bebas Neue", sans-serif; font-size: 1.2rem; letter-spacing: .08em; text-decoration: none; }
+.top-ten-button:hover { background: #6d3884; }
+
+@media (max-width: 40rem) {
+  .movie-ticket { width: 100%; }
+  .ticket-content { grid-template-columns: 1fr; }
+  .poster-frame { min-height: 21rem; }
+}

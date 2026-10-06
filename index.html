@@ -7,7 +7,7 @@
       name="description"
       content="Choose a horror movie for your next fright night."
     />
-    <title>Fright Night Picker</title>
+    <title>Fright Night Movie Picker</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,13 +16,26 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="stage8.css" />
   </head>
   <body>
+    <div class="popcorn-field" aria-hidden="true">
+      <img class="popcorn popcorn-one" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-two" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-three" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-four" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-five" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-six" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-seven" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-eight" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-nine" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-ten" src="assets/popcorn-kernel.png" alt="" />
+    </div>
     <main class="page-shell">
       <section class="picker-card" aria-labelledby="page-title">
         <div class="card-noise" aria-hidden="true"></div>
         <p class="eyebrow"><span>✦</span> Tonight's viewing ritual</p>
-        <h1 id="page-title">Fright Night<br /><span>Picker</span></h1>
+        <h1 id="page-title"><span class="title-line title-top">Fright Night</span><span class="title-line title-bottom">Movie Picker</span></h1>
         <p class="intro">
           Tell us the kind of scare you’re craving—or leave fate to the shadows.
         </p>
@@ -59,16 +72,24 @@
             </div>
           </fieldset>
 
+          <fieldset>
+            <legend>TMDB rating</legend>
+            <div class="choice-grid" role="radiogroup" aria-label="TMDB rating">
+              <label><input type="radio" name="tmdb-rating" value="0-5" /><span>0–5</span></label>
+              <label><input type="radio" name="tmdb-rating" value="6-7" /><span>6–7</span></label>
+              <label><input type="radio" name="tmdb-rating" value="8-10" /><span>8–10</span></label>
+              <label><input type="radio" name="tmdb-rating" value="surprise" checked /><span>Surprise Me</span></label>
+            </div>
+          </fieldset>
+
           <div class="actions">
             <button class="primary-button" type="button" id="pick-movie-button">Pick My Scary Movie</button>
             <button class="secondary-button" type="button" id="just-scare-button">Just Scare Me</button>
           </div>
+          <p class="status-message" id="movie-result" aria-live="polite" hidden>
+            <span id="movie-result-text"></span>
+          </p>
         </form>
-
-        <section class="result-placeholder" id="movie-result" aria-live="polite">
-          <span aria-hidden="true">✦</span>
-          <p id="movie-result-text">Your movie recommendation will appear here.</p>
-        </section>
       </section>
     </main>
     <script src="config.js"></script>

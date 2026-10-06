@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Top-rated scary movies from Fright Night Movie Picker." />
+    <title>Top 10 Scary Movies | Fright Night Movie Picker</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="top10.css" />
+    <link rel="stylesheet" href="top10-mobile.css" />
+  </head>
+  <body>
+    <main class="top-ten-page">
+      <a class="back-link" href="index.html">BACK TO THE PICKER</a>
+      <header class="top-ten-heading">
+        <p>Fright Night Cinema presents</p>
+        <h1>Top 10 <span>Scary Movies</span></h1>
+        <p>Highest-rated horror picks on TMDB.</p>
+      </header>
+      <p class="top-ten-status" id="top-ten-status" aria-live="polite">Finding the best scares…</p>
+      <section class="top-ten-grid" id="top-ten-grid" aria-label="Top 10 scary movies"></section>
+    </main>
+    <script src="config.js"></script>
+    <script src="top10.js"></script>
+  </body>
+</html>
