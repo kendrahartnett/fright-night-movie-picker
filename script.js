@@ -40,14 +40,26 @@ async function getBasicMovieRecommendation() {
       return;
     }
 
-    const year = movie.release_date ? movie.release_date.slice(0, 4) : "release year unknown";
-    showResult(`TMDB connection works: ${movie.title} (${year})`, "success");
+    const movieDetails = await getMovieDetails(movie.id, apiKey);
+    sessionStorage.setItem("frightNightMovie", JSON.stringify(movieDetails));
+    window.location.href = "movie.html";
   } catch (error) {
     console.error("Unable to get a movie from TMDB:", error);
     showResult("Something went bump in the API. Please check your TMDB key and try again.", "error");
   } finally {
     setLoading(false);
   }
+}
+
+async function getMovieDetails(movieId, apiKey) {
+  const query = new URLSearchParams({ api_key: apiKey, language: "en-US" });
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?${query}`);
+
+  if (!response.ok) {
+    throw new Error(`TMDB detail request failed with status ${response.status}`);
+  }
+
+  return response.json();
 }
 
 function showResult(message, state) {

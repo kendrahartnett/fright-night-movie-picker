@@ -9,6 +9,15 @@
 - **Problems found:** No existing application files were present.
 - **Fixes requested:** None yet.
 
+## Prompt 7
+
+- **Goal:** Build Stage 3: show the selected movie on a dedicated ticket-style result page.
+- **Original prompt:** “Ready to continue to stage 3, I want the movie result card to be on another page, displayed with a similar ui theme to look like a movie ticket. I will update ui polish at the end.”
+- **Files changed:** `script.js`, `movie.html`, `movie.css`, `movie.js`, `prompts.md`.
+- **What I reviewed:** TMDB documentation for discover responses and movie detail queries.
+- **Problems found:** Discover results expose numeric genre IDs rather than genre names, so the selected movie needs one follow-up detail request.
+- **Fixes requested:** None yet.
+
 ## Prompt 6
 
 - **Goal:** Update two user-facing lines and shift the cool theme accents from blue to purple.
