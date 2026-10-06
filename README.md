@@ -1,43 +1,55 @@
 # Fright Night Movie Picker
 
-Fright Night Movie Picker is a Halloween-themed horror recommender powered by TMDB. Visitors can filter by scare level, style, era, and TMDB rating, then receive a movie on a vintage ticket page or browse a horror-only Top 10 list.
+![Fright Night Movie Picker preview](assets/fright-night-picker-preview.png)
+
+## Live demo
+
+[**Click to view live demo**](https://fright-night-movie-picker.vercel.app/)
+
+Fright Night Movie Picker is a Halloween-themed horror movie recommender powered by [The Movie Database (TMDB)](https://www.themoviedb.org/). Choose the kind of scare you want, or let fate choose a film for you. Recommendations are presented as a theatrical ticket, with a dedicated horror-only Top 10 page for browsing.
 
 ## Features
 
-- Horror and thriller recommendations with TMDB filters and random selection.
-- Scare level, horror style, era, and TMDB rating-band controls.
-- Vintage ticket result with poster, title, year, genres, TMDB rating, synopsis, and a separate Fright Night scare factor.
-- Horror-only Top 10 ranked view.
-- Friendly no-results, API, offline, missing-data, and invalid-ticket states.
-- Responsive layouts and reduced-motion support for falling popcorn.
-- A Vercel Function proxy that keeps TMDB credentials out of browser code.
+- Filter recommendations by scare level: Mild, Creepy, Terrifying, or Surprise Me.
+- Choose a horror style, including supernatural, slasher, psychological, thriller, or a random selection.
+- Filter by release era: classic, 1980s–1990s, modern, or any era.
+- Filter by TMDB rating bands: 0–5, 6–7, 8–10, or Surprise Me.
+- Use **Just Scare Me** to generate a random horror recommendation without choosing filters.
+- View each recommendation on a vintage movie-ticket result page with its poster, title, year, genres, TMDB rating, synopsis, and Fright Night scare factor.
+- Browse a horror-only Top 10 list ranked by TMDB rating.
+- Receive friendly messages for no results, API failures, network interruptions, and missing movie data.
+- Enjoy responsive layouts, falling popcorn, Halloween typography, and reduced-motion support.
+
+## How it works
+
+The browser sends requests to the app's same-origin `/api/tmdb` Vercel Function. The function securely calls TMDB using a server-side environment variable, so the TMDB credential is never exposed in client-side JavaScript.
 
 ## Deploy on Vercel
 
 1. Import this GitHub repository into Vercel.
-2. In **Project Settings → Environment Variables**, add one of these values for Production and Preview:
+2. In **Project Settings → Environment Variables**, add the following secret for both **Production** and **Preview**:
 
    ```text
    TMDB_READ_ACCESS_TOKEN=your-tmdb-api-read-access-token
    ```
 
-   The API Read Access Token is preferred. Alternatively, configure:
+   The TMDB API Read Access Token is preferred. Alternatively, use a v3 API key:
 
    ```text
    TMDB_API_KEY=your-tmdb-v3-api-key
    ```
 
-3. Redeploy after saving the variable.
-4. Open the deployed app and choose a movie.
+3. Save the variable and redeploy the project. Environment variable changes only apply to new deployments.
+4. Open the new deployment and test a recommendation, the ticket page, and the Top 10 page.
 
-The browser only calls the same-origin `/api/tmdb` route. That Vercel Function reads the environment variable and calls TMDB, so the credential is never sent to visitors.
+Never commit `.env.local`, API keys, or read access tokens to the repository.
 
-## Run Locally
+## Run locally
 
 1. Install [Node.js](https://nodejs.org/) and the Vercel CLI.
 2. Copy `.env.example` to `.env.local`.
-3. Add your TMDB API Read Access Token or v3 API Key to `.env.local`.
-4. Run:
+3. Add either your TMDB Read Access Token or v3 API key to `.env.local`.
+4. Start the local Vercel runtime:
 
    ```powershell
    npx vercel dev
@@ -45,41 +57,36 @@ The browser only calls the same-origin `/api/tmdb` route. That Vercel Function r
 
 5. Open the local URL shown in the terminal, usually `http://localhost:3000`.
 
-Do not add `.env.local` or TMDB credentials to Git.
-
-## Project Structure
+## Project structure
 
 ```text
 fright-night-movie-picker/
 ├── api/tmdb.mjs            # Vercel Function; private TMDB proxy
-├── assets/
-├── .env.example
-├── index.html
-├── movie.html
-├── movie.css
-├── movie-stage8.css
-├── movie.js
-├── prompts.md
-├── README.md
-├── scope.md
-├── script.js
-├── stage8.css
-├── styles.css
-├── top10.html
-├── top10.css
-├── top10-mobile.css
-└── top10.js
+├── assets/                 # Background, popcorn, favicon, and preview artwork
+├── .env.example            # Safe environment variable template
+├── index.html              # Preference picker landing page
+├── movie.html              # Movie-ticket result page
+├── top10.html              # Horror-only Top 10 page
+├── script.js               # Picker filters and recommendation flow
+├── movie.js                # Ticket-page rendering
+├── top10.js                # Top 10 data loading and rendering
+├── styles.css              # Landing page theme and responsive styles
+├── movie.css               # Ticket-page theme
+├── top10.css               # Top 10 page theme
+├── scope.md                # Scope and MVP plan
+└── prompts.md              # Development prompt log
 ```
 
-## Testing Notes
+## Testing notes
 
-- Test each preference and TMDB rating band.
-- Use “Just Scare Me” several times.
-- Confirm the ticket and Top 10 pages load movie details.
-- Test a restrictive combination for the no-results message.
-- Use browser DevTools Network → Offline to test the network message.
+- Test every scare level, horror style, era, and TMDB rating band.
+- Use **Just Scare Me** multiple times and confirm that recommendations vary.
+- Confirm the ticket and Top 10 pages load movie details and posters.
+- Test a restrictive combination to confirm the no-results message.
+- Use browser DevTools → Network → Offline to verify the network error message.
+- Test missing posters, synopsis, rating, and genre data.
 - Test invalid server-side TMDB credentials through a Preview deployment.
-- Test narrow screens and reduced-motion settings.
+- Check narrow screens and reduced-motion settings.
 
 ## Documentation
 
@@ -89,3 +96,8 @@ fright-night-movie-picker/
 ## Credits
 
 This product uses the TMDB API but is not endorsed or certified by TMDB. Movie data and poster images are provided by TMDB.
+
+## Author
+
+Kendra A. Hartnett · GitHub: [@kendrahartnett](https://github.com/kendrahartnett)
+
