@@ -36,7 +36,7 @@ Build a small, understandable Halloween movie-picker web app that uses one publi
 
 ## Out of Scope
 
-- User accounts, saved watchlists, databases, server-side code, additional APIs, frameworks, or a complex recommendation engine.
+- User accounts, saved watchlists, databases, additional APIs, frameworks, or a complex recommendation engine. A small Vercel Function is used only to protect the TMDB credential.
 
 ## Implementation Stages
 

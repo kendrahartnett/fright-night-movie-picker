@@ -215,3 +215,12 @@
 - **What I reviewed:** Rating filters, the horror-only Top 10 list, its mobile description treatment, and the project structure.
 - **Problems found:** The documentation did not list every added stylesheet or clarify that Top 10 is horror-only.
 - **Fixes requested:** None yet.
+
+## Prompt 25
+
+- **Goal:** Convert the app from a browser-exposed TMDB key to a Vercel-safe server-side proxy.
+- **Original prompt:** “Yes convert the current app to the Vercel-safe deployment setup now”
+- **Files changed:** `api/tmdb.mjs`, `.env.example`, `index.html`, `top10.html`, `script.js`, `top10.js`, `README.md`, `scope.md`, `prompts.md`; removed `config.example.js`.
+- **What I reviewed:** The existing client-side `config.js` pattern and Vercel deployment requirements.
+- **Problems found:** The browser expected an ignored local file, so Vercel environment variables were never available and the TMDB credential would have been exposed if injected into client code.
+- **Fixes requested:** None yet.

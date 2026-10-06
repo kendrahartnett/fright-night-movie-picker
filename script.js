@@ -1,5 +1,4 @@
-const TMDB_DISCOVER_URL = "https://api.themoviedb.org/3/discover/movie";
-const TMDB_KEYWORD_SEARCH_URL = "https://api.themoviedb.org/3/search/keyword";
+const TMDB_PROXY_URL = "/api/tmdb";
 const HORROR_GENRE_ID = "27";
 const THRILLER_GENRE_ID = "53";
 
@@ -18,20 +17,14 @@ pickMovieButton.addEventListener("click", () => getMovieRecommendation(false));
 justScareButton.addEventListener("click", () => getMovieRecommendation(true));
 
 async function getMovieRecommendation(ignorePreferences) {
-  const apiKey = window.TMDB_API_KEY;
   const activeButton = ignorePreferences ? justScareButton : pickMovieButton;
-
-  if (!apiKey) {
-    showResult("Add your TMDB API key to config.js before summoning a movie.", "error");
-    return;
-  }
 
   setLoading(true, activeButton);
 
   try {
     const preferences = ignorePreferences ? null : readPreferences();
-    const query = await buildDiscoverQuery(apiKey, preferences, ignorePreferences);
-    const response = await fetch(`${TMDB_DISCOVER_URL}?${query}`);
+    const query = await buildDiscoverQuery(preferences, ignorePreferences);
+    const response = await fetch(`${TMDB_PROXY_URL}?action=discover&${query}`);
 
     if (!response.ok) {
       throw new Error(`TMDB request failed with status ${response.status}`);
@@ -45,7 +38,7 @@ async function getMovieRecommendation(ignorePreferences) {
       return;
     }
 
-    const movieDetails = await getMovieDetails(movie.id, apiKey);
+    const movieDetails = await getMovieDetails(movie.id);
     saveMovieSelection(movieDetails, preferences?.scareLevel || "surprise");
     window.location.href = "movie.html";
   } catch (error) {
@@ -68,9 +61,8 @@ function readPreferences() {
   };
 }
 
-async function buildDiscoverQuery(apiKey, preferences, ignorePreferences) {
+async function buildDiscoverQuery(preferences, ignorePreferences) {
   const query = new URLSearchParams({
-    api_key: apiKey,
     include_adult: "false",
     include_video: "false",
     language: "en-US",
@@ -89,7 +81,7 @@ async function buildDiscoverQuery(apiKey, preferences, ignorePreferences) {
 
   const keyword = STYLE_KEYWORDS[preferences.horrorStyle];
   if (keyword) {
-    const keywordId = await findKeywordId(keyword, apiKey);
+    const keywordId = await findKeywordId(keyword);
     if (keywordId) {
       query.set("with_keywords", keywordId);
     }
@@ -145,10 +137,10 @@ function addEraFilter(query, movieEra) {
   }
 }
 
-async function findKeywordId(keyword, apiKey) {
+async function findKeywordId(keyword) {
   try {
-    const query = new URLSearchParams({ api_key: apiKey, query: keyword });
-    const response = await fetch(`${TMDB_KEYWORD_SEARCH_URL}?${query}`);
+    const query = new URLSearchParams({ action: "keyword", query: keyword });
+    const response = await fetch(`${TMDB_PROXY_URL}?${query}`);
 
     if (!response.ok) {
       return null;
@@ -170,9 +162,9 @@ function pickRandomMovie(movies) {
   return movies[Math.floor(Math.random() * movies.length)];
 }
 
-async function getMovieDetails(movieId, apiKey) {
-  const query = new URLSearchParams({ api_key: apiKey, language: "en-US" });
-  const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?${query}`);
+async function getMovieDetails(movieId) {
+  const query = new URLSearchParams({ action: "movie", id: movieId, language: "en-US" });
+  const response = await fetch(`${TMDB_PROXY_URL}?${query}`);
 
   if (!response.ok) {
     throw new Error(`TMDB detail request failed with status ${response.status}`);

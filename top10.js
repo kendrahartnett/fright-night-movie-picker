@@ -1,5 +1,4 @@
-const DISCOVER_URL = "https://api.themoviedb.org/3/discover/movie";
-const MOVIE_URL = "https://api.themoviedb.org/3/movie";
+const TMDB_PROXY_URL = "/api/tmdb";
 const IMAGE_URL = "https://image.tmdb.org/t/p/w342";
 const statusMessage = document.querySelector("#top-ten-status");
 const movieGrid = document.querySelector("#top-ten-grid");
@@ -7,14 +6,8 @@ const movieGrid = document.querySelector("#top-ten-grid");
 loadTopTenMovies();
 
 async function loadTopTenMovies() {
-  if (!window.TMDB_API_KEY) {
-    showStatus("Add your TMDB API key to config.js before opening the Top 10 list.", true);
-    return;
-  }
-
   try {
     const query = new URLSearchParams({
-      api_key: window.TMDB_API_KEY,
       include_adult: "false",
       include_video: "false",
       language: "en-US",
@@ -22,7 +15,7 @@ async function loadTopTenMovies() {
       "vote_count.gte": "500",
       with_genres: "27",
     });
-    const response = await fetch(`${DISCOVER_URL}?${query}`);
+    const response = await fetch(`${TMDB_PROXY_URL}?action=discover&${query}`);
 
     if (!response.ok) {
       throw new Error("TMDB could not load the Top 10 list.");
@@ -47,8 +40,8 @@ async function loadTopTenMovies() {
 
 async function getMovieDetails(movieId) {
   try {
-    const query = new URLSearchParams({ api_key: window.TMDB_API_KEY, language: "en-US" });
-    const response = await fetch(`${MOVIE_URL}/${movieId}?${query}`);
+    const query = new URLSearchParams({ action: "movie", id: movieId, language: "en-US" });
+    const response = await fetch(`${TMDB_PROXY_URL}?${query}`);
     return response.ok ? response.json() : null;
   } catch (error) {
     return null;

@@ -1,70 +1,59 @@
 # Fright Night Movie Picker
 
-Fright Night Movie Picker is a Halloween-themed movie recommender for choosing a horror or thriller film. Pick a scare level, horror style, and era—or let the app surprise you—then receive a movie on a vintage admission-ticket result page.
+Fright Night Movie Picker is a Halloween-themed horror recommender powered by TMDB. Visitors can filter by scare level, style, era, and TMDB rating, then receive a movie on a vintage ticket page or browse a horror-only Top 10 list.
 
 ## Features
 
-- Recommends horror and thriller movies with the TMDB API.
-- Filters by scare level, horror style, and release era.
-- Filters by TMDB rating bands: 0–5, 6–7, or 8–10.
-- Includes a “Just Scare Me” option for a random horror/thriller pick.
-- Includes a compact Top 10 page for highly rated TMDB horror movies only.
-- Displays a poster, title, year, genres, TMDB rating, synopsis, and a Fright Night scare factor.
-- Handles unavailable data, no results, API failures, network failures, and missing ticket data with friendly messages.
-- Works on desktop and mobile, with a reduced-motion fallback for decorative popcorn animation.
+- Horror and thriller recommendations with TMDB filters and random selection.
+- Scare level, horror style, era, and TMDB rating-band controls.
+- Vintage ticket result with poster, title, year, genres, TMDB rating, synopsis, and a separate Fright Night scare factor.
+- Horror-only Top 10 ranked view.
+- Friendly no-results, API, offline, missing-data, and invalid-ticket states.
+- Responsive layouts and reduced-motion support for falling popcorn.
+- A Vercel Function proxy that keeps TMDB credentials out of browser code.
 
-## Built With
+## Deploy on Vercel
 
-- HTML, CSS, and vanilla JavaScript
-- Fetch API
-- [TMDB API](https://www.themoviedb.org/documentation/api)
+1. Import this GitHub repository into Vercel.
+2. In **Project Settings → Environment Variables**, add one of these values for Production and Preview:
+
+   ```text
+   TMDB_READ_ACCESS_TOKEN=your-tmdb-api-read-access-token
+   ```
+
+   The API Read Access Token is preferred. Alternatively, configure:
+
+   ```text
+   TMDB_API_KEY=your-tmdb-v3-api-key
+   ```
+
+3. Redeploy after saving the variable.
+4. Open the deployed app and choose a movie.
+
+The browser only calls the same-origin `/api/tmdb` route. That Vercel Function reads the environment variable and calls TMDB, so the credential is never sent to visitors.
 
 ## Run Locally
 
-1. Clone or download this repository.
-2. Open PowerShell in the project folder.
-3. Create your local API configuration file:
+1. Install [Node.js](https://nodejs.org/) and the Vercel CLI.
+2. Copy `.env.example` to `.env.local`.
+3. Add your TMDB API Read Access Token or v3 API Key to `.env.local`.
+4. Run:
 
    ```powershell
-   Copy-Item config.example.js config.js
+   npx vercel dev
    ```
 
-4. Follow the API setup steps below.
-5. Open `index.html` with a local development server, such as VS Code Live Server. You can also run:
+5. Open the local URL shown in the terminal, usually `http://localhost:3000`.
 
-   ```powershell
-   python -m http.server 8000
-   ```
-
-6. Visit `http://localhost:8000` in your browser.
-
-## TMDB API Setup
-
-1. Create or sign in to a [TMDB account](https://www.themoviedb.org/).
-2. In TMDB account settings, copy the **API Key (v3 auth)**.
-3. Open local `config.js`.
-4. Add the key between the quotation marks:
-
-   ```js
-   window.TMDB_API_KEY = "your-v3-api-key";
-   ```
-
-5. Save the file and refresh the browser.
-
-`config.js` is ignored by Git. Do not commit your API key or paste it into an issue, pull request, or chat.
-
-## How Recommendations Work
-
-The picker uses TMDB discover filters for genres, keywords, content certification, and release dates. It randomly selects from matching results, then requests details for the selected movie.
-
-The Fright Night scare factor is separate from the TMDB rating. It is a simple app-made 1–5 guide using the selected scare level, movie genres, and runtime. A Terrifying selection always displays at least `4 — Very Scary`.
+Do not add `.env.local` or TMDB credentials to Git.
 
 ## Project Structure
 
 ```text
 fright-night-movie-picker/
+├── api/tmdb.mjs            # Vercel Function; private TMDB proxy
 ├── assets/
-├── config.example.js
+├── .env.example
 ├── index.html
 ├── movie.html
 ├── movie.css
@@ -75,26 +64,22 @@ fright-night-movie-picker/
 ├── scope.md
 ├── script.js
 ├── stage8.css
+├── styles.css
 ├── top10.html
 ├── top10.css
 ├── top10-mobile.css
-├── top10.js
-└── styles.css
+└── top10.js
 ```
 
 ## Testing Notes
 
-- Pick movies with different scare levels, styles, and eras.
-- Use “Just Scare Me” multiple times to confirm varied results.
-- Try every TMDB rating range and confirm returned ratings fall within it.
-- Open the Top 10 list and confirm ten compact horror-only movie cards load.
-- On a small screen, confirm Top 10 descriptions use smaller text and stop after three lines.
-- Confirm Terrifying returns a scare factor of 4 or 5.
-- Try a restrictive combination and confirm the no-results message is friendly.
-- Use DevTools Network → Offline and confirm the offline message appears.
-- Use an invalid API key and confirm the API error message appears.
-- Open `movie.html` directly and confirm the safe return-to-picker state.
-- View the picker on a narrow screen and with reduced motion enabled.
+- Test each preference and TMDB rating band.
+- Use “Just Scare Me” several times.
+- Confirm the ticket and Top 10 pages load movie details.
+- Test a restrictive combination for the no-results message.
+- Use browser DevTools Network → Offline to test the network message.
+- Test invalid server-side TMDB credentials through a Preview deployment.
+- Test narrow screens and reduced-motion settings.
 
 ## Documentation
 
