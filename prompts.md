@@ -98,3 +98,30 @@
 - **What I reviewed:** Picker and ticket handling for empty, malformed, unavailable, and missing movie data.
 - **Problems found:** Malformed saved ticket data and some malformed API response shapes could still cause rendering errors.
 - **Fixes requested:** None yet.
+
+## Prompt 12
+
+- **Goal:** Complete final UI polish with a vintage ticket result theme, animated popcorn background, and improved picker actions.
+- **Original prompt:** “FINAL STAGE – UI POLISH themes” with the supplied polish checklist.
+- **Files changed:** `index.html`, `styles.css`, `movie.css`, `script.js`, `assets/popcorn-kernel.png`, `prompts.md`.
+- **What I reviewed:** Supplied vintage cinema-ticket references and the existing Halloween theme.
+- **Problems found:** The obsolete default result box remained on the picker, the secondary action lacked visual emphasis, and the ticket did not yet match the requested vintage admission style.
+- **Fixes requested:** None yet.
+
+## Prompt 13
+
+- **Goal:** Add more popcorn and make it fall from the top of the picker screen.
+- **Original prompt:** “Add more popcorn pieces and make it like they are falling down the screen from the top”
+- **Files changed:** `index.html`, `styles.css`, `prompts.md`.
+- **What I reviewed:** The initial popcorn background animation.
+- **Problems found:** The first version was too sparse and popped in place rather than falling.
+- **Fixes requested:** None yet.
+
+## Prompt 14
+
+- **Goal:** Move the falling popcorn in front of the picker card.
+- **Original prompt:** “Have the popcorn fall in front of the user card. I cant tell what they are behind there”
+- **Files changed:** `styles.css`, `prompts.md`.
+- **What I reviewed:** The falling-popcorn layer placement.
+- **Problems found:** The popcorn was hidden behind the card and too subtle to read clearly.
+- **Fixes requested:** None yet.

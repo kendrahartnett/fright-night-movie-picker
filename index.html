@@ -18,6 +18,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="popcorn-field" aria-hidden="true">
+      <img class="popcorn popcorn-one" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-two" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-three" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-four" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-five" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-six" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-seven" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-eight" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-nine" src="assets/popcorn-kernel.png" alt="" />
+      <img class="popcorn popcorn-ten" src="assets/popcorn-kernel.png" alt="" />
+    </div>
     <main class="page-shell">
       <section class="picker-card" aria-labelledby="page-title">
         <div class="card-noise" aria-hidden="true"></div>
@@ -63,12 +75,10 @@
             <button class="primary-button" type="button" id="pick-movie-button">Pick My Scary Movie</button>
             <button class="secondary-button" type="button" id="just-scare-button">Just Scare Me</button>
           </div>
+          <p class="status-message" id="movie-result" aria-live="polite" hidden>
+            <span id="movie-result-text"></span>
+          </p>
         </form>
-
-        <section class="result-placeholder" id="movie-result" aria-live="polite">
-          <span aria-hidden="true">✦</span>
-          <p id="movie-result-text">Your movie recommendation will appear here.</p>
-        </section>
       </section>
     </main>
     <script src="config.js"></script>

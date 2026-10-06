@@ -182,8 +182,8 @@ function saveMovieSelection(movie, selectedScareLevel) {
 
 function showResult(message, state) {
   movieResultText.textContent = message;
+  movieResult.hidden = false;
   movieResult.classList.toggle("is-error", state === "error");
-  movieResult.classList.remove("is-loading");
 }
 
 function setLoading(isLoading, activeButton) {
@@ -193,6 +193,7 @@ function setLoading(isLoading, activeButton) {
   movieResult.classList.toggle("is-loading", isLoading);
 
   if (isLoading) {
+    movieResult.hidden = false;
     movieResultText.textContent = "Looking for a horror movie…";
     movieResult.classList.remove("is-error");
   }
