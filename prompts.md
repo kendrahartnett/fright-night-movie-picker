@@ -125,3 +125,21 @@
 - **What I reviewed:** The falling-popcorn layer placement.
 - **Problems found:** The popcorn was hidden behind the card and too subtle to read clearly.
 - **Fixes requested:** None yet.
+
+## Prompt 15
+
+- **Goal:** Complete final documentation with a professional README, setup guide, testing notes, and scope/MVP plan.
+- **Original prompt:** “Updated stage 7” with the supplied final polish and documentation checklist.
+- **Files changed:** `README.md`, `scope.md`, `prompts.md`.
+- **What I reviewed:** The completed feature set, setup flow, error handling, and prompt history.
+- **Problems found:** The README only contained a one-sentence project description, and the scope/MVP plan was not available as a project file.
+- **Fixes requested:** None yet.
+
+## Prompt 16
+
+- **Goal:** Standardize the project title as “Fright Night Movie Picker.”
+- **Original prompt:** “The title needs to be \"Fright Night Movie Picker\"”
+- **Files changed:** `index.html`, `movie.html`, `README.md`, `scope.md`, `prompts.md`.
+- **What I reviewed:** Visible titles, page metadata, and project documentation.
+- **Problems found:** The existing title omitted the word “Movie.”
+- **Fixes requested:** None yet.
