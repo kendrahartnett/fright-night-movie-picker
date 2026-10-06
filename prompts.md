@@ -89,3 +89,12 @@
 - **What I reviewed:** The existing separate preference-filter and scare-factor logic.
 - **Problems found:** The selected scare level was not carried to the ticket, so a Terrifying choice could display a low scare factor.
 - **Fixes requested:** None yet.
+
+## Prompt 11
+
+- **Goal:** Build Stage 6: ensure missing data, API errors, and network errors fail gracefully.
+- **Original prompt:** “Updated stage 6” with the supplied error-handling checklist.
+- **Files changed:** `script.js`, `movie.js`, `prompts.md`.
+- **What I reviewed:** Picker and ticket handling for empty, malformed, unavailable, and missing movie data.
+- **Problems found:** Malformed saved ticket data and some malformed API response shapes could still cause rendering errors.
+- **Fixes requested:** None yet.

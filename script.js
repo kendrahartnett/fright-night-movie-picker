@@ -38,25 +38,22 @@ async function getMovieRecommendation(ignorePreferences) {
     }
 
     const data = await response.json();
-    const movie = pickRandomMovie(data.results);
+    const movie = pickRandomMovie(data?.results);
 
-    if (!movie) {
+    if (!movie?.id) {
       showResult("Nothing crawled out of the crypt. Try changing your preferences.", "error");
       return;
     }
 
     const movieDetails = await getMovieDetails(movie.id, apiKey);
-    sessionStorage.setItem(
-      "frightNightMovie",
-      JSON.stringify({
-        movie: movieDetails,
-        selectedScareLevel: preferences?.scareLevel || "surprise",
-      }),
-    );
+    saveMovieSelection(movieDetails, preferences?.scareLevel || "surprise");
     window.location.href = "movie.html";
   } catch (error) {
     console.error("Unable to get a movie from TMDB:", error);
-    showResult("Something went bump in the API. Please check your TMDB key and try again.", "error");
+    const message = error instanceof TypeError
+      ? "The crypt is offline. Check your connection and try again."
+      : "Something went bump in the API. Please try again.";
+    showResult(message, "error");
   } finally {
     setLoading(false, activeButton);
   }
@@ -64,9 +61,9 @@ async function getMovieRecommendation(ignorePreferences) {
 
 function readPreferences() {
   return {
-    scareLevel: document.querySelector('input[name="scare-level"]:checked').value,
-    horrorStyle: document.querySelector('input[name="horror-style"]:checked').value,
-    movieEra: document.querySelector('input[name="movie-era"]:checked').value,
+    scareLevel: document.querySelector('input[name="scare-level"]:checked')?.value || "surprise",
+    horrorStyle: document.querySelector('input[name="horror-style"]:checked')?.value || "surprise",
+    movieEra: document.querySelector('input[name="movie-era"]:checked')?.value || "any",
   };
 }
 
@@ -131,15 +128,20 @@ function addEraFilter(query, movieEra) {
 }
 
 async function findKeywordId(keyword, apiKey) {
-  const query = new URLSearchParams({ api_key: apiKey, query: keyword });
-  const response = await fetch(`${TMDB_KEYWORD_SEARCH_URL}?${query}`);
+  try {
+    const query = new URLSearchParams({ api_key: apiKey, query: keyword });
+    const response = await fetch(`${TMDB_KEYWORD_SEARCH_URL}?${query}`);
 
-  if (!response.ok) {
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+    return data?.results?.[0]?.id || null;
+  } catch (error) {
+    console.warn("Could not look up a style keyword:", error);
     return null;
   }
-
-  const data = await response.json();
-  return data.results?.[0]?.id || null;
 }
 
 function pickRandomMovie(movies) {
@@ -158,7 +160,24 @@ async function getMovieDetails(movieId, apiKey) {
     throw new Error(`TMDB detail request failed with status ${response.status}`);
   }
 
-  return response.json();
+  const movieDetails = await response.json();
+
+  if (!movieDetails || typeof movieDetails !== "object") {
+    throw new Error("TMDB returned incomplete movie details");
+  }
+
+  return movieDetails;
+}
+
+function saveMovieSelection(movie, selectedScareLevel) {
+  try {
+    sessionStorage.setItem(
+      "frightNightMovie",
+      JSON.stringify({ movie, selectedScareLevel }),
+    );
+  } catch (error) {
+    throw new Error("Could not save the selected movie");
+  }
 }
 
 function showResult(message, state) {
