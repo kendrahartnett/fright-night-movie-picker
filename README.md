@@ -6,7 +6,9 @@ Fright Night Movie Picker is a Halloween-themed movie recommender for choosing a
 
 - Recommends horror and thriller movies with the TMDB API.
 - Filters by scare level, horror style, and release era.
+- Filters by TMDB rating bands: 0–5, 6–7, or 8–10.
 - Includes a “Just Scare Me” option for a random horror/thriller pick.
+- Includes a compact Top 10 page for highly rated TMDB horror movies only.
 - Displays a poster, title, year, genres, TMDB rating, synopsis, and a Fright Night scare factor.
 - Handles unavailable data, no results, API failures, network failures, and missing ticket data with friendly messages.
 - Works on desktop and mobile, with a reduced-motion fallback for decorative popcorn animation.
@@ -66,11 +68,17 @@ fright-night-movie-picker/
 ├── index.html
 ├── movie.html
 ├── movie.css
+├── movie-stage8.css
 ├── movie.js
 ├── prompts.md
 ├── README.md
 ├── scope.md
 ├── script.js
+├── stage8.css
+├── top10.html
+├── top10.css
+├── top10-mobile.css
+├── top10.js
 └── styles.css
 ```
 
@@ -78,6 +86,9 @@ fright-night-movie-picker/
 
 - Pick movies with different scare levels, styles, and eras.
 - Use “Just Scare Me” multiple times to confirm varied results.
+- Try every TMDB rating range and confirm returned ratings fall within it.
+- Open the Top 10 list and confirm ten compact horror-only movie cards load.
+- On a small screen, confirm Top 10 descriptions use smaller text and stop after three lines.
 - Confirm Terrifying returns a scare factor of 4 or 5.
 - Try a restrictive combination and confirm the no-results message is friendly.
 - Use DevTools Network → Offline and confirm the offline message appears.

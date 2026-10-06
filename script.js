@@ -64,6 +64,7 @@ function readPreferences() {
     scareLevel: document.querySelector('input[name="scare-level"]:checked')?.value || "surprise",
     horrorStyle: document.querySelector('input[name="horror-style"]:checked')?.value || "surprise",
     movieEra: document.querySelector('input[name="movie-era"]:checked')?.value || "any",
+    tmdbRating: document.querySelector('input[name="tmdb-rating"]:checked')?.value || "surprise",
   };
 }
 
@@ -84,6 +85,7 @@ async function buildDiscoverQuery(apiKey, preferences, ignorePreferences) {
   query.set("with_genres", preferences.horrorStyle === "thriller" ? THRILLER_GENRE_ID : HORROR_GENRE_ID);
   addScareLevelFilter(query, preferences.scareLevel);
   addEraFilter(query, preferences.movieEra);
+  addRatingFilter(query, preferences.tmdbRating);
 
   const keyword = STYLE_KEYWORDS[preferences.horrorStyle];
   if (keyword) {
@@ -94,6 +96,22 @@ async function buildDiscoverQuery(apiKey, preferences, ignorePreferences) {
   }
 
   return query;
+}
+
+function addRatingFilter(query, tmdbRating) {
+  if (tmdbRating === "0-5") {
+    query.set("vote_average.lte", "5");
+  }
+
+  if (tmdbRating === "6-7") {
+    query.set("vote_average.gte", "6");
+    query.set("vote_average.lte", "7.99");
+  }
+
+  if (tmdbRating === "8-10") {
+    query.set("vote_average.gte", "8");
+    query.set("vote_average.lte", "10");
+  }
 }
 
 function addScareLevelFilter(query, scareLevel) {

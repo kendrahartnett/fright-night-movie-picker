@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="stage8.css" />
   </head>
   <body>
     <div class="popcorn-field" aria-hidden="true">
@@ -34,7 +35,7 @@
       <section class="picker-card" aria-labelledby="page-title">
         <div class="card-noise" aria-hidden="true"></div>
         <p class="eyebrow"><span>✦</span> Tonight's viewing ritual</p>
-        <h1 id="page-title">Fright Night<br /><span>Movie Picker</span></h1>
+        <h1 id="page-title"><span class="title-line title-top">Fright Night</span><span class="title-line title-bottom">Movie Picker</span></h1>
         <p class="intro">
           Tell us the kind of scare you’re craving—or leave fate to the shadows.
         </p>
@@ -68,6 +69,16 @@
               <label><input type="radio" name="movie-era" value="80s-90s" /><span>80s–90s</span></label>
               <label><input type="radio" name="movie-era" value="modern" /><span>Modern</span></label>
               <label><input type="radio" name="movie-era" value="any" checked /><span>Any Era</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>TMDB rating</legend>
+            <div class="choice-grid" role="radiogroup" aria-label="TMDB rating">
+              <label><input type="radio" name="tmdb-rating" value="0-5" /><span>0–5</span></label>
+              <label><input type="radio" name="tmdb-rating" value="6-7" /><span>6–7</span></label>
+              <label><input type="radio" name="tmdb-rating" value="8-10" /><span>8–10</span></label>
+              <label><input type="radio" name="tmdb-rating" value="surprise" checked /><span>Surprise Me</span></label>
             </div>
           </fieldset>
 

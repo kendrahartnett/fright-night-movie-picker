@@ -1,0 +1,9 @@
+.picker-card { width: min(100%, 43rem); padding: clamp(2rem, 5vw, 3.75rem); }
+h1 { font-size: clamp(3.35rem, 8vw, 5.25rem); }
+.title-line { display: block; white-space: nowrap; }
+h1 .title-top { color: var(--paper); }
+h1 .title-bottom { color: var(--ember); }
+
+@media (max-width: 34rem) {
+  .picker-card { width: 100%; }
+}

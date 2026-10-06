@@ -10,6 +10,7 @@ Build a small, understandable Halloween movie-picker web app that uses one publi
 
 - Optional choices for scare level, horror style, and movie era.
 - “Pick My Scary Movie” and “Just Scare Me” actions.
+- Optional TMDB rating bands: 0–5, 6–7, and 8–10.
 
 ### Recommendation flow
 
@@ -21,6 +22,7 @@ Build a small, understandable Halloween movie-picker web app that uses one publi
 
 - Poster, title, release year, genres, TMDB rating, synopsis, and a 1–5 Fright Night scare factor.
 - Clear label that the scare factor is not a TMDB rating.
+- A compact Top 10 page of highly rated TMDB horror movies only, with responsive three-line mobile synopsis previews.
 
 ### Resilience
 
@@ -45,6 +47,7 @@ Build a small, understandable Halloween movie-picker web app that uses one publi
 5. App-defined scare factor.
 6. Error and missing-data handling.
 7. UI polish and project documentation.
+8. Rating filters, compact layouts, and Top 10 list.
 
 ## Definition of Done
 

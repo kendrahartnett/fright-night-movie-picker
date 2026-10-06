@@ -1,0 +1,10 @@
+@media (max-width: 34rem) {
+  .top-overview {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: .8rem;
+    line-height: 1.3;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
