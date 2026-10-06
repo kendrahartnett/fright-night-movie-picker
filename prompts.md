@@ -71,3 +71,21 @@
 - **What I reviewed:** TMDB’s official documentation for the movie discover endpoint and application authentication.
 - **Problems found:** The repository did not contain a TMDB API key, so a live request cannot be verified until one is added locally.
 - **Fixes requested:** None yet.
+
+## Prompt 9
+
+- **Goal:** Build Stage 5: add the app-defined 1–5 scare factor to the ticket result.
+- **Original prompt:** “Move on to Stage 5”
+- **Files changed:** `movie.html`, `movie.css`, `movie.js`, `prompts.md`.
+- **What I reviewed:** The movie-detail fields supplied to the ticket page.
+- **Problems found:** None.
+- **Fixes requested:** None yet.
+
+## Prompt 10
+
+- **Goal:** Make a Terrifying selection produce at least a 4 on the app-defined scare factor.
+- **Original prompt:** “Make the experience match expectations, make Terrifying produce at least 4. Make these changes”
+- **Files changed:** `script.js`, `movie.js`, `movie.html`, `prompts.md`.
+- **What I reviewed:** The existing separate preference-filter and scare-factor logic.
+- **Problems found:** The selected scare level was not carried to the ticket, so a Terrifying choice could display a low scare factor.
+- **Fixes requested:** None yet.

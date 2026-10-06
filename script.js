@@ -46,7 +46,13 @@ async function getMovieRecommendation(ignorePreferences) {
     }
 
     const movieDetails = await getMovieDetails(movie.id, apiKey);
-    sessionStorage.setItem("frightNightMovie", JSON.stringify(movieDetails));
+    sessionStorage.setItem(
+      "frightNightMovie",
+      JSON.stringify({
+        movie: movieDetails,
+        selectedScareLevel: preferences?.scareLevel || "surprise",
+      }),
+    );
     window.location.href = "movie.html";
   } catch (error) {
     console.error("Unable to get a movie from TMDB:", error);
