@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your Fright Night Picker movie ticket." />
+    <title>Your Fright Night Ticket</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="movie.css" />
+  </head>
+  <body>
+    <main class="ticket-scene">
+      <a class="back-link" href="index.html">Back to the crypt</a>
+      <section class="movie-ticket" aria-labelledby="movie-title">
+        <header class="ticket-header">
+          <p>Fright Night Cinema</p>
+          <span aria-hidden="true">✦</span>
+          <p>Admit one brave soul</p>
+        </header>
+        <div class="ticket-content">
+          <div class="poster-frame" id="poster-frame">
+            <div class="poster-placeholder" id="poster-placeholder">No poster rose from the grave.</div>
+          </div>
+          <div class="movie-details">
+            <p class="ticket-label">Tonight's feature</p>
+            <h1 id="movie-title">Your movie awaits</h1>
+            <dl class="movie-facts">
+              <div><dt>Released</dt><dd id="movie-year">—</dd></div>
+              <div><dt>Genre</dt><dd id="movie-genre">—</dd></div>
+              <div><dt>TMDB rating</dt><dd id="movie-rating">—</dd></div>
+            </dl>
+            <section class="scare-factor" aria-labelledby="scare-factor-label">
+              <p class="ticket-label" id="scare-factor-label">Fright Night scare factor</p>
+              <div class="scare-meter" aria-label="Scare factor">
+                <span id="scare-dots" aria-hidden="true">●●●○○</span>
+                <strong id="scare-label">Calculating chills…</strong>
+              </div>
+              <p class="scare-note">Guided by your scare choice, genre, and runtime—not a TMDB rating.</p>
+            </section>
+            <p class="synopsis" id="movie-synopsis">Summoning your movie details…</p>
+            <a class="pick-another" href="index.html">Pick another movie</a>
+          </div>
+        </div>
+        <footer class="ticket-footer"><span>Keep this ticket close</span><span>✦</span><span>Fright Night Picker</span></footer>
+      </section>
+    </main>
+    <script src="movie.js"></script>
+  </body>
+</html>
