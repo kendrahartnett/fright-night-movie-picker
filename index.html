@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="tmdb-attribution.css" />
     <link rel="stylesheet" href="stage8.css" />
   </head>
   <body>
@@ -73,8 +74,8 @@
           </fieldset>
 
           <fieldset>
-            <legend>TMDB rating</legend>
-            <div class="choice-grid" role="radiogroup" aria-label="TMDB rating">
+            <legend>The Movie Database rating</legend>
+            <div class="choice-grid" role="radiogroup" aria-label="The Movie Database rating">
               <label><input type="radio" name="tmdb-rating" value="0-5" /><span>0–5</span></label>
               <label><input type="radio" name="tmdb-rating" value="6-7" /><span>6–7</span></label>
               <label><input type="radio" name="tmdb-rating" value="8-10" /><span>8–10</span></label>
@@ -92,6 +93,7 @@
         </form>
       </section>
     </main>
+    <footer class="tmdb-attribution">* Ratings and movie data provided by <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">The Movie Database</a>.</footer>
     <script src="script.js"></script>
   </body>
 </html>

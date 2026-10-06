@@ -1,0 +1,12 @@
+.tmdb-attribution {
+  margin: 1.25rem auto;
+  padding: 0 1rem;
+  color: #d2b8f0;
+  font-size: .78rem;
+  text-align: center;
+}
+
+.tmdb-attribution a {
+  color: #f6efff;
+  text-underline-offset: .15rem;
+}
