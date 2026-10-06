@@ -9,6 +9,42 @@
 - **Problems found:** No existing application files were present.
 - **Fixes requested:** None yet.
 
+## Prompt 6
+
+- **Goal:** Update two user-facing lines and shift the cool theme accents from blue to purple.
+- **Original prompt:** “Change: Tell us the kind of chill you’re craving—or leave fate to the shadows. to say this instead: \"Tell us the kind of scare you’re craving—or leave fate to the shadows. \". Instead of the text: \"How brave are you feeling?\" change that to say \"**How far into the dark do you want to go?**\". Change the sutle blue colors and tones to a shade of purple”
+- **Files changed:** `index.html`, `styles.css`, `prompts.md`.
+- **What I reviewed:** The current cinematic theme and supplied visual direction.
+- **Problems found:** None.
+- **Fixes requested:** None yet.
+
+## Prompt 5
+
+- **Goal:** Increase the translucency of the picker card.
+- **Original prompt:** “opacity a little more”
+- **Files changed:** `styles.css`, `prompts.md`.
+- **What I reviewed:** The adjusted translucent-card theme.
+- **Problems found:** None.
+- **Fixes requested:** None yet.
+
+## Prompt 4
+
+- **Goal:** Make the title more Halloween-themed and allow more of the cinematic background to show through the panel.
+- **Original prompt:** “make the title \"Fright night picker\" Halloween themed font. And add a slight opacity to the card so we can see the background slightly”
+- **Files changed:** `styles.css`, `prompts.md`.
+- **What I reviewed:** The first cinematic theme pass.
+- **Problems found:** The poster title was too editorial and the card was more opaque than desired.
+- **Fixes requested:** None yet.
+
+## Prompt 3
+
+- **Goal:** Restyle the interface to draw from supplied Halloween-horror visual references.
+- **Original prompt:** “Help me theme the UI more like these images.”
+- **Files changed:** `index.html`, `styles.css`, `assets/fright-night-backdrop.png`, `prompts.md`.
+- **What I reviewed:** Four user-supplied visual references with cinematic teal fog, ember-orange light, dark horror-poster typography, and restrained crimson accents.
+- **Problems found:** The previous warm-purple theme did not capture the references’ cinematic contrast and atmosphere.
+- **Fixes requested:** None yet.
+
 ## Prompt 2
 
 - **Goal:** Continue to Stage 2: connect TMDB, make one request, and show a basic movie result without adding preference filtering.
